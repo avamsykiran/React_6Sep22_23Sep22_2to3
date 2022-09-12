@@ -104,6 +104,12 @@ ReactJS
             <Dashboard />
 
         Functional Components
+
+            also known as state-less component is a javascript function that returns a JSXElement and
+            may accept the props
+
+            const MyComp = () => <div></div> ;
+
         High Order Components
 
     JSX -   Javascript eXtended.
@@ -151,3 +157,16 @@ ReactJS
             'class' attribute is not allowed, 'className' is used instead.
             all html elements are to be in lower-case
             all built-in or custome react elements must be init-caped.
+
+    
+    Assignemnt#1: Create a react app to display the below data on table:
+
+        emps : [
+            {id:101,firstName:'Vamsy',lastName:'Aripaka',salary:55600,joinDate:new Date('2022-01-01')},
+            {id:102,firstName:'Suseela',lastName:'Aripaka',salary:45600,joinDate:new Date('2021-01-01')},
+            {id:103,firstName:'Sagar',lastName:'Aripaka',salary:35600,joinDate:new Date('2022-01-01')},
+            {id:104,firstName:'Indhikaa',lastName:'Aripaka',salary:85600,joinDate:new Date('2020-01-01')},
+            {id:105,firstName:'Srinu',lastName:'Dachepalli',salary:65600,joinDate:new Date('2020-01-01')}
+        ];
+
+    
