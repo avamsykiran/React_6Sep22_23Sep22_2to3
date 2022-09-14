@@ -158,7 +158,6 @@ ReactJS
             all html elements are to be in lower-case
             all built-in or custome react elements must be init-caped.
 
-    
     Assignemnt#1: Create a react app to display the below data on table:
 
         emps : [
@@ -169,4 +168,31 @@ ReactJS
             {id:105,firstName:'Srinu',lastName:'Dachepalli',salary:65600,joinDate:new Date('2020-01-01')}
         ];
 
-    
+    React State
+
+        State is not directly mutable or is directly immutable.
+        React.Component offers 'setState({field:value})' and only using this method
+        we can mofiy the state of a component.
+        'setState' should not be called insdie the 'render' method.
+
+    React Component Life Cycle
+
+       constructor()
+            ↓
+         render()
+            | 
+            ↓
+    componentDidMount()
+            | 
+            ↓
+            |-------------------------------------------------------|
+            |  nothing happend until some event occurs              |←----------|
+            |   if an event that occured has invoked setState ?     |           |
+            |-------------------------------------------------------|           |
+                            |                                                   |
+                            ↓                                                   |
+                         render()                                               |
+                            |                                                   |
+                            ↓                                                   |
+                    componentDidUpdate()                                        |
+                            |--------------------------------------------------→|
