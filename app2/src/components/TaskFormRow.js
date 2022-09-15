@@ -4,7 +4,7 @@ class TaskFormRow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            task: { id: 0, desp: '', status: "PLANNED" }
+            task: props.t ? {...props.t} :{ id: 0, desp: '', status: "PLANNED" }
         }
     }
 
@@ -15,9 +15,21 @@ class TaskFormRow extends Component {
     }
 
     handleFormSubmit = event => {
-        this.props.add({...this.state.task});
-        this.setState({task: { id: 0, desp: '', status: "PLANNED" }});
+        if(this.state.task.isEditable){
+            this.props.update({...this.state.task});
+        }else{
+            this.props.add({...this.state.task});
+            this.setState({task: { id: 0, desp: '', status: "PLANNED" }});
+        }
         event.preventDefault();
+    }
+
+    reset = event => {
+        if(this.state.task.isEditable){
+            this.props.unMarkEditable(this.state.task.id);
+        }else{
+            this.setState({task: { id: 0, desp: '', status: "PLANNED" }});
+        }        
     }
 
     render() {
@@ -39,7 +51,10 @@ class TaskFormRow extends Component {
                 </div>
                 <div className="col-2">
                     <button className="btn btn-sm btn-primary">
-                        ADD
+                        {task.isEditable?"SAVE":"ADD"}
+                    </button>
+                    <button className="btn btn-sm btn-danger" type="button" onClick={this.reset}>
+                        {task.isEditable?"CANCEL":"RESET"}
                     </button>
                 </div>
             </form>

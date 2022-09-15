@@ -177,22 +177,49 @@ ReactJS
 
     React Component Life Cycle
 
-       constructor()
-            ↓
-         render()
-            | 
-            ↓
-    componentDidMount()
-            | 
-            ↓
-            |-------------------------------------------------------|
-            |  nothing happend until some event occurs              |←----------|
-            |   if an event that occured has invoked setState ?     |           |
-            |-------------------------------------------------------|           |
-                            |                                                   |
-                            ↓                                                   |
-                         render()                                               |
-                            |                                                   |
-                            ↓                                                   |
-                    componentDidUpdate()                                        |
-                            |--------------------------------------------------→|
+        constructor()
+                ↓
+            render()
+                | 
+                ↓
+        componentDidMount()
+                | 
+                ↓
+                |-------------------------------------------------------|
+                |  nothing happend until some event occurs              |←----------|
+                |   if an event that occured has invoked setState ?     |           |
+                |-------------------------------------------------------|           |
+                                |                                                   |
+                                ↓                                                   |
+                            render()                                                |
+                                |                                                   |
+                                ↓                                                   |
+                        componentDidUpdate()                                        |
+                                |--------------------------------------------------→|
+
+    React Hooks
+
+        a Hook is a function from react library that provides state management and
+        life cycle methods for functional components.
+
+        useState            is a fucntion that accepts an initial value for a field
+                            and an array of two items - [reader,writer]
+
+                            reader is sued to read teh valeu of the field
+                            writer is sued to chagne the value of the field and
+                            each time writer is used, the component get rendered again.
+
+                            let [x,setX] = useState(0)
+
+                            console.log(x);
+                            setX(100);
+
+        useEffect(callBack,arrayOfDependencies)
+
+            if the arrayOfDependencies is empty, then the callBack is equal to componentDidMount
+                        means that the callBack executes once after the first render()
+
+            if the arrayOfDependencies has any fields, then the callBack is equal to componentDidUpdate
+                        means that the callBack exeuvtes everytime after the render() and
+                            when the field in the arrayOfDependencies get modifed.
+

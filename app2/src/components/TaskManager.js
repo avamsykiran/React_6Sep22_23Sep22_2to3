@@ -22,6 +22,18 @@ class TaskManager extends Component {
         this.setState({tasks:this.state.tasks.filter(t => t.id!==id)});
     }
 
+    markEditable = id =>{
+        this.setState({tasks:this.state.tasks.map(t => t.id!=id?t:{...t,isEditable:true})})
+    }
+
+    unMarkEditable = id =>{
+        this.setState({tasks:this.state.tasks.map(t => t.id!=id?t:{...t,isEditable:undefined})})
+    }
+
+    update = task =>{
+        this.setState({tasks:this.state.tasks.map(t => t.id!=task.id?t:{...task,isEditable:undefined})})
+    }
+
     render(){
 
         let {tasks} = this.state;
@@ -55,7 +67,10 @@ class TaskManager extends Component {
                             </div>
                        ) :
                        (
-                        tasks.map( t => <TaskRow key={t.id} t={t} deleteById={this.deleteById} /> )
+                        tasks.map( t => 
+                            t.isEditable ?
+                            <TaskFormRow key={t.id} t={t} update={this.update} unMarkEditable={this.unMarkEditable}/> :
+                            <TaskRow key={t.id} t={t} deleteById={this.deleteById} markEditable={this.markEditable} /> )
                        )
                     }
                 </div>
