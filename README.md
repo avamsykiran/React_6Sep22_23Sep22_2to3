@@ -223,3 +223,65 @@ ReactJS
                         means that the callBack exeuvtes everytime after the render() and
                             when the field in the arrayOfDependencies get modifed.
 
+    Central State Managment Using Redux
+
+        npm install redux react-redux --save
+
+        redux is a state management tool.
+
+            store       is a global object that holds all the state of the applciation.
+                        and one app will have only one store.
+
+                        const myStore = createStore(myReducer);
+
+            reducer     is a pure javascript function that takes oldState and action
+                        as params and returns the modifiedState.
+
+                        const reducer  = (oldState,action) => {
+                            //we have to write code to modify the oldState into modifiedState
+                            //based on the action.
+                            return modifeidState;
+                        }
+
+            action      is an object that indicates what operation shall be
+                        done on the oldState. This action object has two properties
+                            type        the operation like add or delete or update ...etc.,
+                            payload     the data needed to complete the operation.
+
+                        const action = { type:'',payload:null } ;
+
+            disptach    is a method used by components to send an action to the reducer
+
+
+        react-redux is a library used to integration redux with react components.
+
+            Provider        is a in-built component sued to wrap a state 
+                            around the top-level component.
+
+                                <Provider store={myStore}>
+                                    <App />
+                                </Provider>
+
+            useSelector     is a hook used to extract requried portion of the state from the store.
+
+                            let shoppingList = useSelector( state => state.shoppingCart )
+
+            useDisptach     is a hook used to extract the 'dispatch' method.
+
+                            cosnt dispatch = useDispatch();
+
+
+            store   -------(state)-----------------------------------
+            ↑                                       |               |
+            |                                       |               |
+            |                                   useSelector     useSelector
+            |                                       ↓               ↓
+            |                                   Component1      Component2
+            |                                       |               |               
+            |                                       |               |
+            |                                   useDispatch       useDispatch
+            |                               dispatch(action)     dispatch(action)
+            |                                       |               |
+            |                                       ↓               ↓
+            |---(modified state)--- reducer ←---(action)-------------
+                                                    
