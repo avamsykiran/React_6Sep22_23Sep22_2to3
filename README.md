@@ -284,4 +284,48 @@ ReactJS
             |                                       |               |
             |                                       ↓               ↓
             |---(modified state)--- reducer ←---(action)-------------
-                                                    
+
+    json-server
+
+        npm install json-server --save
+
+        json-server --watch ./data.json --port 9090
+
+
+    Integrating Rest-api using axios
+
+        npm install axios --save
+
+        axios.get(url)  : Promise
+        axios.put(url,reqBody)  : Promise
+        axios.post(url,reqBody)  : Promise
+        axios.delete(url)  : Promise
+
+    Integrating axios with redux using redux-thunk
+
+        npm install redux-thunk --save
+
+        actionThunks        are function that return a function.
+
+        action can an object or a function.
+
+            store   -------(state)-----------------------------------
+            ↑                                       |               |
+            |                                       |               |
+            |                                   useSelector     useSelector
+            |                                       ↓               ↓
+            |                                   Component1      Component2
+            |                                       |               |               
+            |                                       |               |
+            |                                   useDispatch       useDispatch
+            |                             dispatch(actionObj)  dispatch(actionFunction)
+            |                                       |               |
+            |                                       ↓               |
+            |---(modified state)--- reducer ←-|←-(actionObj)      ----------(action Fucntion)----------
+                                              |                   |                                   |
+                                              |←-(waitActionObj)--|   dispatch(waitActionObj)         |
+                                              |                   | axiosCall                         |
+                                              |←-(dataActionObj)--|     .then(...)                    |  
+                                              |←-(errActionObj)---|     .catch(...)                   |  
+                                                                  |                                   |
+                                                                  -------------------------------------  

@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "desp": "Pay Electricity Bills",
+      "status": "DONE"
+    },
+    {
+      "id": 2,
+      "desp": "Clear Water Bills",
+      "status": "PLANNED"
+    },
+    {
+      "id": 3,
+      "desp": "Refuel the vehicle",
+      "status": "DONE"
+    },
+    {
+      "desp": "Check School Bus Timings",
+      "status": "PLANNED",
+      "id": 4
+    }
+  ]
+}
