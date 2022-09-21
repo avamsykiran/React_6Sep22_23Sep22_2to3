@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { createRemoveTaskAction,createMarkTaskEditableAction } from '../stateManagement/tasksReducer'
+import { createDeleteTaskActionThunk,createMarkTaskEditableAction } from '../stateManagement/tasksReducer'
 
 const TaskRow = ({ t }) => {
     
@@ -20,7 +20,7 @@ const TaskRow = ({ t }) => {
                 <button className="btn btn-sm btn-primary" onClick={e => dispatch(createMarkTaskEditableAction(t.id))}>
                     EDIT
                 </button>
-                <button className="btn btn-sm btn-danger" onClick={e => dispatch(createRemoveTaskAction(t.id))}>
+                <button className="btn btn-sm btn-danger" onClick={e => dispatch(createDeleteTaskActionThunk(t.id))}>
                     DELETE
                 </button>
             </div>

@@ -14,11 +14,6 @@
       "id": 3,
       "desp": "Refuel the vehicle",
       "status": "DONE"
-    },
-    {
-      "desp": "Check School Bus Timings",
-      "status": "PLANNED",
-      "id": 4
     }
   ]
 }

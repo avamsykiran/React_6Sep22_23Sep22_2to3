@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { createAddTaskAction,createUpdateTaskAction,createUnMarkTaskEditableAction} from '../stateManagement/tasksReducer'
+import { createAddTaskActionThunk,createUpdateTaskDataActionThunk,createUnMarkTaskEditableAction} from '../stateManagement/tasksReducer'
 
 const TaskFormRow = ({ t }) => {
 
@@ -16,9 +16,9 @@ const TaskFormRow = ({ t }) => {
 
     const handleFormSubmit = event => {
         if (task.isEditable) {
-            dispatch(createUpdateTaskAction({ ...task }));
+            dispatch(createUpdateTaskDataActionThunk({ ...task,isEditable:undefined }));
         } else {
-            dispatch(createAddTaskAction({ ...task }));
+            dispatch(createAddTaskActionThunk({ ...task }));
             setTask({ id: 0, desp: '', status: "PLANNED" });
         }
         event.preventDefault();
