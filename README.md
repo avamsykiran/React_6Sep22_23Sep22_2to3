@@ -329,3 +329,26 @@ ReactJS
                                               |←-(errActionObj)---|     .catch(...)                   |  
                                                                   |                                   |
                                                                   -------------------------------------  
+
+Routing
+--------------------------------------------------------------------------------
+
+    npm install react-router-dom --save
+
+    <BrowserRouter>
+        
+        <.....CommonLayout />
+
+        <Routes>
+            <Route   path="" element={<Component1 />} />
+            <Route   path="" element={<Component2 />} />
+            <Route   path="" element={<Component3 />} />
+            <Route   path="" element={<htmlDOM> </htmlDOM>} />
+        </Routes>
+
+        <....CommonLayout />
+    </BrowserRouter>
+
+    <Redirect to="" />
+
+    <Link to="">Link Text</Link>        instead of 'a' tags.
